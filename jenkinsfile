@@ -1,0 +1,39 @@
+
+//change these variables for your project 
+def projectName = "Mock HYBRIS"
+
+
+// should not need to change any of the below
+def gzip = true
+def promote = false
+def testReportFileName = env.BUILD_TAG + '-report.html'
+def functionalFailure = false
+def preBuildFailure = false
+def buildFailure = false
+def buildNumber = env.BUILD_NUMBER
+def branchname = env.BRANCH_NAME
+
+
+node {
+      
+      stage('Cleanup Workspace'){
+             cleanWs notFailBuild: false
+             currentBuild.result = 'SUCCESS'
+           }
+
+        stage('Code Checkout') {
+                        git branch: 'master', credentialsId: '17138bb0-40d5-494f-ba5b-194ba8442021', url: 'https://github.com/medagam55/java-ant-sample.git'
+               }
+        stage('Build & Sonar Scan') {
+                
+               }
+        
+        stage('Ant Production ') {
+
+            } 
+        
+        stage('Cleanup Workspace'){
+             cleanWs notFailBuild: false
+             currentBuild.result = 'SUCCESS'
+           }
+}
